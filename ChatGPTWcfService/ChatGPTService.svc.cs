@@ -23,9 +23,16 @@ namespace WordCountService
         private static readonly TraceSource traceSource = new TraceSource("ChatGPTWcfService");
 
         // You can use this key or your own ChatGPT key if the existing one is already disabled.
-        private static readonly string openAIAPIKey = "";
+        private static readonly string openAIAPIKey = Environment.GetEnvironmentVariable("OPENAI_API_KEY");
         private static readonly string openAIAPIEndpoint = "https://api.openai.com/v1/chat/completions";
         private static readonly string ChatFileName = Path.Combine(AppDomain.CurrentDomain.GetData("DataDirectory").ToString(), "gptChats.json");
+
+        // Constructor
+        public ChatGPTService()
+        {
+            // Log API key initialization
+            traceSource.TraceEvent(TraceEventType.Information, 0, $"API Key loaded: {openAIAPIKey?.Substring(0, 15)}...");
+        }
 
         public async Task<string> AskChatGPTAboutUrl(string question, string[] contextResources, string chatId)
         {
