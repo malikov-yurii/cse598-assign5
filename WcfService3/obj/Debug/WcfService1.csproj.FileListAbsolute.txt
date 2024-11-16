@@ -1,0 +1,14 @@
+C:\Users\Brig Miller\source\repos\WcfService1\WcfService1\bin\WcfService1.dll.config
+C:\Users\Brig Miller\source\repos\WcfService1\WcfService1\bin\WcfService1.dll
+C:\Users\Brig Miller\source\repos\WcfService1\WcfService1\bin\WcfService1.pdb
+C:\Users\Brig Miller\source\repos\WcfService1\WcfService1\obj\Debug\WcfService1.csproj.AssemblyReference.cache
+C:\Users\Brig Miller\source\repos\WcfService1\WcfService1\obj\Debug\WcfService1.csproj.CoreCompileInputs.cache
+C:\Users\Brig Miller\source\repos\WcfService1\WcfService1\obj\Debug\WcfService1.dll
+C:\Users\Brig Miller\source\repos\WcfService1\WcfService1\obj\Debug\WcfService1.pdb
+C:\Users\YMalikov.KIEV\Downloads\Reviews598assignment1\R4 CSE445Assignment1\CSE445Assignment1\WcfService1\WcfService1\bin\WcfService1.dll.config
+C:\Users\YMalikov.KIEV\Downloads\Reviews598assignment1\R4 CSE445Assignment1\CSE445Assignment1\WcfService1\WcfService1\bin\WcfService1.dll
+C:\Users\YMalikov.KIEV\Downloads\Reviews598assignment1\R4 CSE445Assignment1\CSE445Assignment1\WcfService1\WcfService1\bin\WcfService1.pdb
+C:\Users\YMalikov.KIEV\Downloads\Reviews598assignment1\R4 CSE445Assignment1\CSE445Assignment1\WcfService1\WcfService1\obj\Debug\WcfService1.csproj.AssemblyReference.cache
+C:\Users\YMalikov.KIEV\Downloads\Reviews598assignment1\R4 CSE445Assignment1\CSE445Assignment1\WcfService1\WcfService1\obj\Debug\WcfService1.csproj.CoreCompileInputs.cache
+C:\Users\YMalikov.KIEV\Downloads\Reviews598assignment1\R4 CSE445Assignment1\CSE445Assignment1\WcfService1\WcfService1\obj\Debug\WcfService1.dll
+C:\Users\YMalikov.KIEV\Downloads\Reviews598assignment1\R4 CSE445Assignment1\CSE445Assignment1\WcfService1\WcfService1\obj\Debug\WcfService1.pdb
