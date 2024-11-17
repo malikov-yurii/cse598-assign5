@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<users>
+	<user>
+		<userId>user1</userId>
+		<password>pass1</password>
+	</user>
+	<user>
+		<userId>user2</userId>
+		<password>pass2</password>
+	</user>
+	<user>
+		<userId>user3</userId>
+		<password>pass3</password>
+	</user>
+</users>
