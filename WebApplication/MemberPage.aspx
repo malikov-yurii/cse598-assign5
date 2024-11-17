@@ -3,6 +3,6 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main>
         <h1>Welcome to the Member Page</h1>
-        <h2 id="usernameDisplay" runat="server"></h2>
+        <p id="usernameDisplay" runat="server"></p>
     </main>
 </asp:Content>

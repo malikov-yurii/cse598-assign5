@@ -20,12 +20,12 @@ namespace WebApplication.App_Code
         }
 
         public void LogIn() {
-            HttpContext.Current.Session["CurrentUser"] = this;
+            HttpContext.Current.Session["CurrentUser"] = this; // Set Current User in Session
         }
 
         public void LogOut()
         {
-            HttpContext.Current.Session["CurrentUser"] = null;
+            HttpContext.Current.Session["CurrentUser"] = null; // Remove Current User from Session
         }
     }
 }

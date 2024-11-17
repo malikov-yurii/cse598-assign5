@@ -58,6 +58,7 @@
                     </ul>
 
                     <div class="nav-item d-flex text-nowrap">
+                        <span ID="loggedInUser" runat="server" class="nav-link-login-logout"></span>
                         <asp:HyperLink ID="linkLogin" runat="server" NavigateUrl="~/Login.aspx" CssClass="nav-link nav-link-login-logout" Visible="true">Login/Register</asp:HyperLink>
                         <asp:LinkButton ID="linkLogout" runat="server" OnClick="Logout_Click" CssClass="nav-link nav-link-login-logout" Visible="true">Logout</asp:LinkButton>
                     </div>
@@ -70,6 +71,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
+                <p id="footerUserId" runat="server"></p>
                 <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
             </footer>
         </div>

@@ -20,7 +20,7 @@ namespace WebApplication
             if (!string.IsNullOrEmpty(latitude) && !string.IsNullOrEmpty(longitude))
             {
                 string locationData = GetLocationData(latitude, longitude);
-                DisplayLocationData(locationData);
+                DisplayLocationData(locationData); // Display the response with formatting
             }
             else
             {
@@ -28,9 +28,10 @@ namespace WebApplication
             }
         }
 
+        // Calls REST service and displays the summary of the location by coordinates
         private string GetLocationData(string latitude, string longitude)
         {
-            // TODO replace localhost with real link
+            // 
             string apiUrl = $"http://webstrar102.fulton.asu.edu/page8/api/locationservice?latitude={latitude}&longitude={longitude}";
 
             using (WebClient client = new WebClient())
@@ -41,6 +42,7 @@ namespace WebApplication
             }
         }
 
+        // Build html table representing the summary of the Location
         private void DisplayLocationData(string jsonData)
         {
             try

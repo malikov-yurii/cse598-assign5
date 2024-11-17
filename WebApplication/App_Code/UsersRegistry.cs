@@ -23,7 +23,7 @@ namespace WebApplication.App_Code
         }
 
 
-        // Write a new user to the file
+        // Write a new User to the file
         public static void WriteUser(User user)
         {
             using (StreamWriter sw = File.AppendText(dataFilePath))
@@ -88,6 +88,7 @@ namespace WebApplication.App_Code
             return null;
         }
 
+        // Retrievev user by userId
         public static User GetUserById(string userId) {
             var users = ReadUsers();
             foreach (var user in users)
