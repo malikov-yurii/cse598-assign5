@@ -9,6 +9,13 @@
 <body>
     <form id="form1" runat="server" enctype="multipart/form-data">
 
+        <!-- Prompts Left Section -->
+        <div>
+            <h3>Prompts Left for User Today:</h3>
+            <asp:Label ID="lblPromptsLeft" runat="server" Text="Fetching prompts left..." Font-Bold="true"></asp:Label>
+        </div>
+        <br />
+
         <!-- ChatGPT Section -->
         <div>
             <h2>Ask ChatGPT to Evaluate Development Investment Attractiveness for given Latitude, Longitude.</h2>
@@ -35,8 +42,8 @@
         <!-- Chat History Section -->
         <div>
             <h2>Get Chat History</h2>
-            <label for="txtChatId">Enter Chat ID (default: "testuser"):</label><br />
-            <asp:TextBox ID="txtChatId" runat="server" Width="300px" Text="testuser"></asp:TextBox><br />
+            <label for="txtUserIdToGetChat">Enter Chat ID (default: "testuser"):</label><br />
+            <asp:TextBox ID="txtUserIdToGetChat" runat="server" Width="300px" Text="testuser"></asp:TextBox><br />
 
             <!-- Button to get Chat History -->
             <asp:Button ID="btnGetChatHistory" runat="server" Text="Get Chat History" OnClick="btnGetChatHistory_Click" /><br />

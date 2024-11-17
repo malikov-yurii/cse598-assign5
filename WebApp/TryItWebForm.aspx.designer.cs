@@ -24,6 +24,15 @@ namespace TryItWebApplication
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// lblPromptsLeft control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPromptsLeft;
+
+        /// <summary>
         /// txtUserId control.
         /// </summary>
         /// <remarks>
@@ -69,13 +78,13 @@ namespace TryItWebApplication
         protected global::System.Web.UI.WebControls.TextBox txtGptResult;
 
         /// <summary>
-        /// txtChatId control.
+        /// txtUserIdToGetChat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtChatId;
+        protected global::System.Web.UI.WebControls.TextBox txtUserIdToGetChat;
 
         /// <summary>
         /// btnGetChatHistory control.

@@ -9,11 +9,42 @@ using System.Web.UI.WebControls;
 
 using System.Net.Http;
 using System.Threading.Tasks;
+using WebApplication1.ChatGPTServiceReference;
 
 namespace TryItWebApplication
 {
     public partial class TryItWebForm : System.Web.UI.Page
     {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                UpdatePromptsLeftForUser();
+            }
+        }
+
+        private void UpdatePromptsLeftForUser()
+        {
+            try
+            {
+                // Create a client to call the ChatGPT service
+                using (ChatGPTServiceClient client = new ChatGPTServiceClient())
+                {
+                    // Fetch the remaining prompts for "testuser"
+                    Int16 promptsLeft = client.getPromptsCountLeftToday("testuser");
+
+                    // Display the result in the label
+                    lblPromptsLeft.Text = $"You have {promptsLeft} prompts left for today.";
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions and display error message
+                lblPromptsLeft.Text = $"Error fetching prompts: {ex.Message}";
+            }
+        }
+
+
         protected async void btnAskChatGPT_Click(object sender, EventArgs e)
         {
             string userId = txtUserId.Text.Trim();
@@ -30,14 +61,13 @@ namespace TryItWebApplication
                 try
                 {
                     // Create a client to call the ChatGPT service
-                    WebApplication1.ChatGPTServiceReference.ChatGPTServiceClient client = new WebApplication1.ChatGPTServiceReference.ChatGPTServiceClient();
-
-                    // Call the AskChatGPTAboutUrl service method asynchronously with hardcoded chatId
-                    string chatGPTResponse = await Task.Run(() => client.evaluateDevelopmentInvestmentAttractiveness(latitude, longitude, userId));
-                    client.Close();
-
-                    // Display the result in the TextBox
-                    txtGptResult.Text = chatGPTResponse;
+                    using (ChatGPTServiceClient client = new ChatGPTServiceClient())
+                    {
+                        string chatGPTResponse = await Task.Run(() => client.evaluateDevelopmentInvestmentAttractiveness(latitude, longitude, userId));
+                        // Display the result in the TextBox
+                        txtGptResult.Text = chatGPTResponse;
+                        UpdatePromptsLeftForUser();
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -64,7 +94,7 @@ namespace TryItWebApplication
 
         protected async void btnGetChatHistory_Click(object sender, EventArgs e)
         {
-            string userId = txtUserId.Text.Trim();
+            string userId = txtUserIdToGetChat.Text.Trim();
 
             userId = Trim(userId, 100);
 
@@ -73,14 +103,13 @@ namespace TryItWebApplication
                 try
                 {
                     // Create a client to call the ChatGPT service
-                    WebApplication1.ChatGPTServiceReference.ChatGPTServiceClient client = new WebApplication1.ChatGPTServiceReference.ChatGPTServiceClient();
-
-                    // Call the getChat service method
-                    string chatHistory = await Task.Run(() => client.getChat(userId));
-                    client.Close();
-
-                    // Display the chat history in the text box
-                    txtChatHistory.Text = chatHistory;
+                    using (ChatGPTServiceClient client = new ChatGPTServiceClient())
+                    {
+                        // Call the getChat service method
+                        string chatHistory = await Task.Run(() => client.getChat(userId));
+                        // Display the chat history in the text box
+                        txtChatHistory.Text = chatHistory;
+                    }
                 }
                 catch (Exception ex)
                 {
