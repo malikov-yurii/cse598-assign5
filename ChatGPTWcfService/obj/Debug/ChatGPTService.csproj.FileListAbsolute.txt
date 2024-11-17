@@ -102,3 +102,29 @@ C:\projects\cse598-assign5\ChatGPTWcfService\obj\Debug\ChatGPTService.csproj.Cor
 C:\projects\cse598-assign5\ChatGPTWcfService\obj\Debug\ChatGPTS.2E95551C.Up2Date
 C:\projects\cse598-assign5\ChatGPTWcfService\obj\Debug\ChatGPTWcfService.dll
 C:\projects\cse598-assign5\ChatGPTWcfService\obj\Debug\ChatGPTWcfService.pdb
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\ChatGPTWcfService\bin\ChatGPTWcfService.dll.config
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\ChatGPTWcfService\bin\ChatGPTWcfService.dll
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\ChatGPTWcfService\bin\ChatGPTWcfService.pdb
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\ChatGPTWcfService\bin\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\ChatGPTWcfService\bin\System.Buffers.dll
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\ChatGPTWcfService\bin\System.Memory.dll
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\ChatGPTWcfService\bin\System.Numerics.Vectors.dll
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\ChatGPTWcfService\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\ChatGPTWcfService\bin\System.Text.Encodings.Web.dll
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\ChatGPTWcfService\bin\System.Text.Json.dll
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\ChatGPTWcfService\bin\System.Threading.Tasks.Extensions.dll
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\ChatGPTWcfService\bin\System.ValueTuple.dll
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\ChatGPTWcfService\bin\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\ChatGPTWcfService\bin\System.Buffers.xml
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\ChatGPTWcfService\bin\System.Memory.xml
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\ChatGPTWcfService\bin\System.Numerics.Vectors.xml
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\ChatGPTWcfService\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\ChatGPTWcfService\bin\System.Text.Encodings.Web.xml
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\ChatGPTWcfService\bin\System.Text.Json.xml
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\ChatGPTWcfService\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\ChatGPTWcfService\bin\System.ValueTuple.xml
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\ChatGPTWcfService\obj\Debug\ChatGPTService.csproj.AssemblyReference.cache
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\ChatGPTWcfService\obj\Debug\ChatGPTService.csproj.CoreCompileInputs.cache
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\ChatGPTWcfService\obj\Debug\ChatGPTS.2E95551C.Up2Date
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\ChatGPTWcfService\obj\Debug\ChatGPTWcfService.dll
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\ChatGPTWcfService\obj\Debug\ChatGPTWcfService.pdb

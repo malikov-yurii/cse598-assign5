@@ -24,3 +24,29 @@ C:\Users\YMalikov.KIEV\Documents\asu\cse598-assign3\cse598-assign3-malikov\WcfSe
 C:\Users\YMalikov.KIEV\Documents\asu\cse598-assign3\cse598-assign3-malikov\WcfService1\obj\Debug\WebDownl.6A809CF0.Up2Date
 C:\Users\YMalikov.KIEV\Documents\asu\cse598-assign3\cse598-assign3-malikov\WcfService1\obj\Debug\WebDownloadingWcfService.dll
 C:\Users\YMalikov.KIEV\Documents\asu\cse598-assign3\cse598-assign3-malikov\WcfService1\obj\Debug\WebDownloadingWcfService.pdb
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\WebDownloadWcfService\bin\WebDownloadingWcfService.dll.config
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\WebDownloadWcfService\bin\WebDownloadingWcfService.dll
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\WebDownloadWcfService\bin\WebDownloadingWcfService.pdb
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\WebDownloadWcfService\bin\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\WebDownloadWcfService\bin\System.Buffers.dll
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\WebDownloadWcfService\bin\System.Memory.dll
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\WebDownloadWcfService\bin\System.Numerics.Vectors.dll
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\WebDownloadWcfService\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\WebDownloadWcfService\bin\System.Text.Encodings.Web.dll
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\WebDownloadWcfService\bin\System.Text.Json.dll
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\WebDownloadWcfService\bin\System.Threading.Tasks.Extensions.dll
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\WebDownloadWcfService\bin\System.ValueTuple.dll
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\WebDownloadWcfService\bin\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\WebDownloadWcfService\bin\System.Buffers.xml
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\WebDownloadWcfService\bin\System.Memory.xml
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\WebDownloadWcfService\bin\System.Numerics.Vectors.xml
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\WebDownloadWcfService\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\WebDownloadWcfService\bin\System.Text.Encodings.Web.xml
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\WebDownloadWcfService\bin\System.Text.Json.xml
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\WebDownloadWcfService\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\WebDownloadWcfService\bin\System.ValueTuple.xml
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\WebDownloadWcfService\obj\Debug\WebDownloadingService.csproj.AssemblyReference.cache
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\WebDownloadWcfService\obj\Debug\WebDownloadingService.csproj.CoreCompileInputs.cache
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\WebDownloadWcfService\obj\Debug\WebDownl.6A809CF0.Up2Date
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\WebDownloadWcfService\obj\Debug\WebDownloadingWcfService.dll
+C:\Users\roman\Desktop\CSE 598 - Assignment 5\cse598-assign5\WebDownloadWcfService\obj\Debug\WebDownloadingWcfService.pdb
