@@ -133,6 +133,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="LoginControl.ascx" />
     <None Include="Connected Services\ChatGPTServiceReference\ChatGPTService.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -167,6 +168,13 @@
     </Compile>
     <Compile Include="TryItWebForm.aspx.designer.cs">
       <DependentUpon>TryItWebForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoginControl.ascx.cs">
+      <DependentUpon>LoginControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginControl.ascx.designer.cs">
+      <DependentUpon>LoginControl.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
