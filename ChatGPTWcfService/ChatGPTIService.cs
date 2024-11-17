@@ -15,13 +15,19 @@ namespace WordCountService
     {
 
         [OperationContract]
-        Task<string> AskChatGPTAboutUrl(string question, string[] resources, string chatId);
+        Task<string> AskChatGPTAboutUrl(string question, string[] resources, string userId);
 
         [OperationContract]
-        string getChat(string chatId);
+        string getChat(string userId);
 
         [OperationContract]
-        string AskChatGPT(string question);
+        string AskChatGPT(string question, string userId);
+
+        [OperationContract]
+        Int16 getPromptsCountLeftToday(string userId);
+
+        [OperationContract]
+        string evaluateDevelopmentInvestmentAttractiveness(double latitude, double longitude, string userId);
 
     }
 

@@ -11,8 +11,6 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using System.Security.Policy;
-using System.Runtime.Remoting.Contexts;
 using System.Text.RegularExpressions;
 
 namespace WordCountService
@@ -27,6 +25,8 @@ namespace WordCountService
         private static readonly string openAIAPIEndpoint = "https://api.openai.com/v1/chat/completions";
         private static readonly string ChatFileName = Path.Combine(AppDomain.CurrentDomain.GetData("DataDirectory").ToString(), "gptChats.json");
 
+        private const int MAX_PROMPTS_PER_DAY = 10;
+
         // Constructor
         public ChatGPTService()
         {
@@ -34,17 +34,16 @@ namespace WordCountService
             traceSource.TraceEvent(TraceEventType.Information, 0, $"API Key loaded: {openAIAPIKey?.Substring(0, 15)}...");
         }
 
-        public async Task<string> AskChatGPTAboutUrl(string question, string[] contextResources, string chatId)
+        public async Task<string> AskChatGPTAboutUrl(string question, string[] contextResources, string userId)
         {
-
             if (string.IsNullOrEmpty(question))
             {
                 return "Empty question";
             }
 
-            if (string.IsNullOrEmpty(chatId))
+            if (string.IsNullOrEmpty(userId))
             {
-                return "Missing chatId";
+                return "Missing userId";
             }
 
             question = Trim(question, 1000);
@@ -83,21 +82,21 @@ namespace WordCountService
             await Task.WhenAll(tasks);
 
             var fullQuestion = question + questionContext.ToString();
-            // Trim the fullQuestion to 10000 symbols
+            // Trim the fullQuestion to 20000 symbols
             fullQuestion = Trim(fullQuestion, 20000);
 
             traceSource.TraceEvent(TraceEventType.Verbose, 0, $"fullQuestion: {fullQuestion}");
 
-            //Ask ChatGPT asynchronously
-            var gptResponse = await AskChatGPTAsync(fullQuestion);
+            // Ask ChatGPT asynchronously
+            var gptResponse = await AskChatGPTAsync(fullQuestion, userId);
 
             // Persist chat with question and response
-            await PersistChatAsync(chatId, question, gptResponse, contextResources);
+            await PersistChatAsync(userId, question, gptResponse, contextResources);
 
             return gptResponse;
         }
 
-        private async Task PersistChatAsync(string chatId, string question, string gptResponse, string[] resources)
+        private async Task PersistChatAsync(string userId, string question, string gptResponse, string[] resources)
         {
             // Load existing chat history or create a new chat structure
             var chatHistory = LoadChatHistory();
@@ -123,17 +122,17 @@ namespace WordCountService
                 Time = epochTime
             };
 
-            // Append or create the chat for the given chatId
-            if (!chatHistory.Chats.ContainsKey(chatId))
+            // Append or create the chat for the given userId
+            if (!chatHistory.Chats.ContainsKey(userId))
             {
-                chatHistory.Chats[chatId] = new Chat
+                chatHistory.Chats[userId] = new Chat
                 {
                     ChatEntries = new List<ChatEntry>()
                 };
             }
 
             // Add both the user's question and the GPT response to the chat
-            chatHistory.Chats[chatId].ChatEntries.AddRange(new[] { userEntry, gptEntry });
+            chatHistory.Chats[userId].ChatEntries.AddRange(new[] { userEntry, gptEntry });
 
             // Save the updated chat history back to the file
             SaveChatHistory(chatHistory);
@@ -201,15 +200,15 @@ namespace WordCountService
             }
         }
 
-        public string AskChatGPT(string question)
+        public string AskChatGPT(string question, string userId)
         {
             try
             {
-                // Trim the question to 10000 symbols
+                // Trim the question to 20000 symbols
                 question = Trim(question, 20000);
 
                 // Call the async method and get the result
-                var result = AskChatGPTAsync(question).GetAwaiter().GetResult();
+                var result = AskChatGPTAsync(question, userId).GetAwaiter().GetResult();
                 return result;
             }
             catch (Exception ex)
@@ -218,9 +217,10 @@ namespace WordCountService
             }
         }
 
-        private async Task<string> AskChatGPTAsync(string question)
+        private async Task<string> AskChatGPTAsync(string question, string userId)
         {
-            if (string.IsNullOrEmpty(question)) {
+            if (string.IsNullOrEmpty(question))
+            {
                 return "";
             }
 
@@ -255,7 +255,12 @@ namespace WordCountService
                 var chatGPTResponse = JsonSerializer.Deserialize<OpenAIResponse>(responseBody);
 
                 // Extract the response text
-                return chatGPTResponse.choices[0].message.content;
+                var gptResponse = chatGPTResponse.choices[0].message.content;
+
+                // Persist the chat
+                await PersistChatAsync(userId, question, gptResponse, null);
+
+                return gptResponse;
             }
         }
 
@@ -308,16 +313,16 @@ namespace WordCountService
             return result;
         }
 
-        public string getChat(string chatId)
+        public string getChat(string userId)
         {
             // Load existing chat history
             var chatHistory = LoadChatHistory();
 
-            // Check if the chatId exists in the loaded chat history
-            if (chatHistory.Chats.ContainsKey(chatId))
+            // Check if the userId exists in the loaded chat history
+            if (chatHistory.Chats.ContainsKey(userId))
             {
-                // Get the chat for the given chatId
-                var chat = chatHistory.Chats[chatId];
+                // Get the chat for the given userId
+                var chat = chatHistory.Chats[userId];
 
                 // Reverses the list in-place to see latest on top
                 chat.ChatEntries.Reverse();
@@ -329,8 +334,64 @@ namespace WordCountService
             }
             else
             {
-                // If the chatId does not exist, return an error message in JSON format
-                return JsonSerializer.Serialize(new { error = "Chat not found", chatId = chatId });
+                // If the userId does not exist, return an error message in JSON format
+                return JsonSerializer.Serialize(new { error = "Chat not found", userId = userId });
+            }
+        }
+
+        public Int16 getPromptsCountLeftToday(string userId)
+        {
+            int promptsLeft = MAX_PROMPTS_PER_DAY;
+            try
+            {
+                var chatHistory = LoadChatHistory();
+
+                if (chatHistory.Chats.ContainsKey(userId))
+                {
+                    var chatEntries = chatHistory.Chats[userId].ChatEntries;
+
+                    // Get current date in UTC
+                    DateTime today = DateTime.UtcNow.Date;
+
+                    // Count the number of prompts made by the user today
+                    int promptsToday = chatEntries.Count(entry =>
+                        entry.Actor == "USER" &&
+                        DateTimeOffset.FromUnixTimeSeconds(entry.Time).UtcDateTime.Date == today);
+
+                    promptsLeft = MAX_PROMPTS_PER_DAY - promptsToday;
+                    if (promptsLeft < 0)
+                        promptsLeft = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                traceSource.TraceEvent(TraceEventType.Error, 0, $"Error in getPromptsCountLeftToday: {ex.Message}");
+                // In case of error, assume no prompts left
+                promptsLeft = 0;
+            }
+            return (Int16)promptsLeft;
+        }
+
+        public string evaluateDevelopmentInvestmentAttractiveness(double latitude, double longitude, string userId)
+        {
+            try
+            {
+                // Compose a question for ChatGPT
+                string question = $"Evaluate the development investment attractiveness " +
+                    $"of the location at latitude {latitude} and longitude {longitude}. " +
+                    $"Provide an analysis including economic, environmental, and social factors for " +
+                    $"building new estate and installing solar panels. Speculate in 100 words. " +
+                    $"Start with nearest city name and estate and solar development investment Attractiveness level where top is 10 and low is 0";
+
+                // Call AskChatGPT with a system userId or a special identifier
+                string response = AskChatGPT(question, userId);
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                traceSource.TraceEvent(TraceEventType.Error, 0, $"Error in evaluateDevelopmentInvestmentAttractiveness: {ex.Message}");
+                return $"Error: {ex.Message}";
             }
         }
 
@@ -355,21 +416,17 @@ namespace WordCountService
                 return input;
 
             // Remove <script>...</script> blocks (including multiline content and any attributes)
-            input = Regex.Replace(input, @"<script>.*?script>", string.Empty, RegexOptions.Singleline | RegexOptions.IgnoreCase);
-            //traceSource.TraceEvent(TraceEventType.Verbose, 0, $"After Remove <script>: {input}");
+            input = Regex.Replace(input, @"<script[^>]*>.*?<\/script>", string.Empty, RegexOptions.Singleline | RegexOptions.IgnoreCase);
 
             // Remove <style>...</style> blocks (including multiline content and any attributes)
-            input = Regex.Replace(input, @"<style[^>]*>.*?style>", string.Empty, RegexOptions.Singleline | RegexOptions.IgnoreCase);
-            //traceSource.TraceEvent(TraceEventType.Verbose, 0, $"After Remove <style>: {input}");
+            input = Regex.Replace(input, @"<style[^>]*>.*?<\/style>", string.Empty, RegexOptions.Singleline | RegexOptions.IgnoreCase);
 
             // Remove HTML tags
             input = Regex.Replace(input, @"<[^>]+>", string.Empty, RegexOptions.IgnoreCase);
-            //traceSource.TraceEvent(TraceEventType.Verbose, 0, $"After Remove other tags: {input}");
 
             input = Regex.Replace(input, @"\\n", " ", RegexOptions.IgnoreCase);
             input = Regex.Replace(input, @"\\t", " ", RegexOptions.IgnoreCase);
             input = Regex.Replace(input, @" +", " ", RegexOptions.IgnoreCase);
-
 
             // Optionally, decode HTML entities like &quot; to their respective characters
             input = System.Net.WebUtility.HtmlDecode(input);
@@ -377,9 +434,8 @@ namespace WordCountService
             return input.Trim(); // Return the cleaned text
         }
 
-
-    // Class to match OpenAI response structure
-    public class OpenAIResponse
+        // Classes to match OpenAI response structure
+        public class OpenAIResponse
         {
             public Choice[] choices { get; set; }
         }
