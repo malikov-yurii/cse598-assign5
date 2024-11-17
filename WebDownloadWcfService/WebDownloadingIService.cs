@@ -7,7 +7,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 
-namespace WordCountService
+namespace ChatGPTNamespace
 {
     [ServiceContract]
     public interface WebDownloadingIService

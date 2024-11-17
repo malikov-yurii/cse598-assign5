@@ -13,7 +13,7 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
-namespace WordCountService
+namespace ChatGPTNamespace
 {
     public class ChatGPTService : IChatGPTService
     {

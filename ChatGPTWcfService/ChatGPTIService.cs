@@ -8,7 +8,7 @@ using System.ServiceModel.Web;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WordCountService
+namespace ChatGPTNamespace
 {
     [ServiceContract]
     public interface IChatGPTService

@@ -25,6 +25,18 @@
   <wsdl:message name="IChatGPTService_AskChatGPT_OutputMessage">
     <wsdl:part name="parameters" element="tns:AskChatGPTResponse" />
   </wsdl:message>
+  <wsdl:message name="IChatGPTService_getPromptsCountLeftToday_InputMessage">
+    <wsdl:part name="parameters" element="tns:getPromptsCountLeftToday" />
+  </wsdl:message>
+  <wsdl:message name="IChatGPTService_getPromptsCountLeftToday_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getPromptsCountLeftTodayResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChatGPTService_evaluateDevelopmentInvestmentAttractiveness_InputMessage">
+    <wsdl:part name="parameters" element="tns:evaluateDevelopmentInvestmentAttractiveness" />
+  </wsdl:message>
+  <wsdl:message name="IChatGPTService_evaluateDevelopmentInvestmentAttractiveness_OutputMessage">
+    <wsdl:part name="parameters" element="tns:evaluateDevelopmentInvestmentAttractivenessResponse" />
+  </wsdl:message>
   <wsdl:portType name="IChatGPTService">
     <wsdl:operation name="AskChatGPTAboutUrl">
       <wsdl:input wsaw:Action="http://tempuri.org/IChatGPTService/AskChatGPTAboutUrl" message="tns:IChatGPTService_AskChatGPTAboutUrl_InputMessage" />
@@ -37,6 +49,14 @@
     <wsdl:operation name="AskChatGPT">
       <wsdl:input wsaw:Action="http://tempuri.org/IChatGPTService/AskChatGPT" message="tns:IChatGPTService_AskChatGPT_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IChatGPTService/AskChatGPTResponse" message="tns:IChatGPTService_AskChatGPT_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getPromptsCountLeftToday">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatGPTService/getPromptsCountLeftToday" message="tns:IChatGPTService_getPromptsCountLeftToday_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatGPTService/getPromptsCountLeftTodayResponse" message="tns:IChatGPTService_getPromptsCountLeftToday_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="evaluateDevelopmentInvestmentAttractiveness">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatGPTService/evaluateDevelopmentInvestmentAttractiveness" message="tns:IChatGPTService_evaluateDevelopmentInvestmentAttractiveness_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatGPTService/evaluateDevelopmentInvestmentAttractivenessResponse" message="tns:IChatGPTService_evaluateDevelopmentInvestmentAttractiveness_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IChatGPTService" type="tns:IChatGPTService">
@@ -61,6 +81,24 @@
     </wsdl:operation>
     <wsdl:operation name="AskChatGPT">
       <soap:operation soapAction="http://tempuri.org/IChatGPTService/AskChatGPT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPromptsCountLeftToday">
+      <soap:operation soapAction="http://tempuri.org/IChatGPTService/getPromptsCountLeftToday" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="evaluateDevelopmentInvestmentAttractiveness">
+      <soap:operation soapAction="http://tempuri.org/IChatGPTService/evaluateDevelopmentInvestmentAttractiveness" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TryItWebApplication.ChatGPTServiceReference {
+namespace WebApplication1.ChatGPTServiceReference {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -16,31 +16,45 @@ namespace TryItWebApplication.ChatGPTServiceReference {
     public interface IChatGPTService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatGPTService/AskChatGPTAboutUrl", ReplyAction="http://tempuri.org/IChatGPTService/AskChatGPTAboutUrlResponse")]
-        string AskChatGPTAboutUrl(string question, string[] resources, string chatId);
+        string AskChatGPTAboutUrl(string question, string[] resources, string userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatGPTService/AskChatGPTAboutUrl", ReplyAction="http://tempuri.org/IChatGPTService/AskChatGPTAboutUrlResponse")]
-        System.Threading.Tasks.Task<string> AskChatGPTAboutUrlAsync(string question, string[] resources, string chatId);
+        System.Threading.Tasks.Task<string> AskChatGPTAboutUrlAsync(string question, string[] resources, string userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatGPTService/getChat", ReplyAction="http://tempuri.org/IChatGPTService/getChatResponse")]
-        string getChat(string chatId);
+        string getChat(string userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatGPTService/getChat", ReplyAction="http://tempuri.org/IChatGPTService/getChatResponse")]
-        System.Threading.Tasks.Task<string> getChatAsync(string chatId);
+        System.Threading.Tasks.Task<string> getChatAsync(string userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatGPTService/AskChatGPT", ReplyAction="http://tempuri.org/IChatGPTService/AskChatGPTResponse")]
-        string AskChatGPT(string question);
+        string AskChatGPT(string question, string userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatGPTService/AskChatGPT", ReplyAction="http://tempuri.org/IChatGPTService/AskChatGPTResponse")]
-        System.Threading.Tasks.Task<string> AskChatGPTAsync(string question);
+        System.Threading.Tasks.Task<string> AskChatGPTAsync(string question, string userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatGPTService/getPromptsCountLeftToday", ReplyAction="http://tempuri.org/IChatGPTService/getPromptsCountLeftTodayResponse")]
+        short getPromptsCountLeftToday(string userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatGPTService/getPromptsCountLeftToday", ReplyAction="http://tempuri.org/IChatGPTService/getPromptsCountLeftTodayResponse")]
+        System.Threading.Tasks.Task<short> getPromptsCountLeftTodayAsync(string userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatGPTService/evaluateDevelopmentInvestmentAttractiveness", ReplyAction="http://tempuri.org/IChatGPTService/evaluateDevelopmentInvestmentAttractivenessRes" +
+            "ponse")]
+        string evaluateDevelopmentInvestmentAttractiveness(double latitude, double longitude, string userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatGPTService/evaluateDevelopmentInvestmentAttractiveness", ReplyAction="http://tempuri.org/IChatGPTService/evaluateDevelopmentInvestmentAttractivenessRes" +
+            "ponse")]
+        System.Threading.Tasks.Task<string> evaluateDevelopmentInvestmentAttractivenessAsync(double latitude, double longitude, string userId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IChatGPTServiceChannel : TryItWebApplication.ChatGPTServiceReference.IChatGPTService, System.ServiceModel.IClientChannel {
+    public interface IChatGPTServiceChannel : WebApplication1.ChatGPTServiceReference.IChatGPTService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ChatGPTServiceClient : System.ServiceModel.ClientBase<TryItWebApplication.ChatGPTServiceReference.IChatGPTService>, TryItWebApplication.ChatGPTServiceReference.IChatGPTService {
+    public partial class ChatGPTServiceClient : System.ServiceModel.ClientBase<WebApplication1.ChatGPTServiceReference.IChatGPTService>, WebApplication1.ChatGPTServiceReference.IChatGPTService {
         
         public ChatGPTServiceClient() {
         }
@@ -61,28 +75,44 @@ namespace TryItWebApplication.ChatGPTServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public string AskChatGPTAboutUrl(string question, string[] resources, string chatId) {
-            return base.Channel.AskChatGPTAboutUrl(question, resources, chatId);
+        public string AskChatGPTAboutUrl(string question, string[] resources, string userId) {
+            return base.Channel.AskChatGPTAboutUrl(question, resources, userId);
         }
         
-        public System.Threading.Tasks.Task<string> AskChatGPTAboutUrlAsync(string question, string[] resources, string chatId) {
-            return base.Channel.AskChatGPTAboutUrlAsync(question, resources, chatId);
+        public System.Threading.Tasks.Task<string> AskChatGPTAboutUrlAsync(string question, string[] resources, string userId) {
+            return base.Channel.AskChatGPTAboutUrlAsync(question, resources, userId);
         }
         
-        public string getChat(string chatId) {
-            return base.Channel.getChat(chatId);
+        public string getChat(string userId) {
+            return base.Channel.getChat(userId);
         }
         
-        public System.Threading.Tasks.Task<string> getChatAsync(string chatId) {
-            return base.Channel.getChatAsync(chatId);
+        public System.Threading.Tasks.Task<string> getChatAsync(string userId) {
+            return base.Channel.getChatAsync(userId);
         }
         
-        public string AskChatGPT(string question) {
-            return base.Channel.AskChatGPT(question);
+        public string AskChatGPT(string question, string userId) {
+            return base.Channel.AskChatGPT(question, userId);
         }
         
-        public System.Threading.Tasks.Task<string> AskChatGPTAsync(string question) {
-            return base.Channel.AskChatGPTAsync(question);
+        public System.Threading.Tasks.Task<string> AskChatGPTAsync(string question, string userId) {
+            return base.Channel.AskChatGPTAsync(question, userId);
+        }
+        
+        public short getPromptsCountLeftToday(string userId) {
+            return base.Channel.getPromptsCountLeftToday(userId);
+        }
+        
+        public System.Threading.Tasks.Task<short> getPromptsCountLeftTodayAsync(string userId) {
+            return base.Channel.getPromptsCountLeftTodayAsync(userId);
+        }
+        
+        public string evaluateDevelopmentInvestmentAttractiveness(double latitude, double longitude, string userId) {
+            return base.Channel.evaluateDevelopmentInvestmentAttractiveness(latitude, longitude, userId);
+        }
+        
+        public System.Threading.Tasks.Task<string> evaluateDevelopmentInvestmentAttractivenessAsync(double latitude, double longitude, string userId) {
+            return base.Channel.evaluateDevelopmentInvestmentAttractivenessAsync(latitude, longitude, userId);
         }
     }
 }

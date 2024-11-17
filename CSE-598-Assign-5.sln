@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatGPTService", "ChatGPTWc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDownloadingService", "WebDownloadWcfService\WebDownloadingService.csproj", "{7A390CB9-9988-4E3C-89DD-42CD43E7F1FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordCountService", "WordCountWcfService\WordCountService.csproj", "{C5AFA278-6388-499B-86B6-D654FF7E7E8D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TryItWebApplication", "WebApp\TryItWebApplication.csproj", "{7B45E119-670B-4839-8EAE-C6881FC38087}"
 EndProject
 Global
@@ -25,10 +23,6 @@ Global
 		{7A390CB9-9988-4E3C-89DD-42CD43E7F1FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A390CB9-9988-4E3C-89DD-42CD43E7F1FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A390CB9-9988-4E3C-89DD-42CD43E7F1FF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C5AFA278-6388-499B-86B6-D654FF7E7E8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C5AFA278-6388-499B-86B6-D654FF7E7E8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C5AFA278-6388-499B-86B6-D654FF7E7E8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C5AFA278-6388-499B-86B6-D654FF7E7E8D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7B45E119-670B-4839-8EAE-C6881FC38087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7B45E119-670B-4839-8EAE-C6881FC38087}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B45E119-670B-4839-8EAE-C6881FC38087}.Release|Any CPU.ActiveCfg = Release|Any CPU

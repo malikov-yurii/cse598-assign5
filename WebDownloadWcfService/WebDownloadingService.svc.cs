@@ -9,7 +9,7 @@ using System.ServiceModel.Web;
 using System.Text;
 using System.Text.Json;
 
-namespace WordCountService
+namespace ChatGPTNamespace
 {
     public class WebDownloadingService : WebDownloadingIService
     {

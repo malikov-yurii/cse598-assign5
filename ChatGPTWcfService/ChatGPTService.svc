@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="WordCountService.ChatGPTService" CodeBehind="ChatGPTService.svc.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="ChatGPTNamespace.ChatGPTService" CodeBehind="ChatGPTService.svc.cs" %>
