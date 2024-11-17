@@ -253,6 +253,38 @@
           "Time": 1731867315
         }
       ]
+    },
+    "testuser1": {
+      "ChatEntries": [
+        {
+          "Actor": "USER",
+          "Text": "Evaluate the development investment attractiveness of the location at latitude 50.4504 and longitude 40.5245. Provide an analysis including economic, environmental, and social factors for building new estate and installing solar panels. Speculate in 100 words. Start with nearest city name and estate and solar development investment Attractiveness level where top is 10 and low is 0",
+          "Resources": null,
+          "Time": 1731873191
+        },
+        {
+          "Actor": "ChatGPT",
+          "Text": "Nearest City: Valuyki\n\nEstate Development Investment Attractiveness: 7\nSolar Development Investment Attractiveness: 8\n\nAnalysis:\n- Economic: Good potential due to available land and demand for real estate. Solar panels can lower energy costs, appealing to investors.\n- Environmental: Latitude benefits solar projects with ample sunlight. A sustainable choice for energy can enhance environmental appeal and reduce carbon footprint.\n- Social: Proximity to Valuyki provides access to amenities and services. Development can enhance local infrastructure, creating job opportunities and improving the quality of life.\n\nOverall, the location presents a compelling investment opportunity for estate development and solar panel installations.",
+          "Resources": null,
+          "Time": 1731873191
+        }
+      ]
+    },
+    "user1": {
+      "ChatEntries": [
+        {
+          "Actor": "USER",
+          "Text": "Evaluate the development investment attractiveness of the location at latitude 50.4504 and longitude 22.5245. Provide an analysis including economic, environmental, and social factors for building new estate and installing solar panels. Speculate in 100 words. Start with nearest city name and estate and solar development investment Attractiveness level where top is 10 and low is 0",
+          "Resources": null,
+          "Time": 1731875163
+        },
+        {
+          "Actor": "ChatGPT",
+          "Text": "Nearest City: Rzesz\u00F3w, Poland\n\nEstate Development Investment Attractiveness Level: 8\n\nSolar Panel Installation Investment Attractiveness Level: 7\n\nAnalysis: The location\u0027s latitude offers good sunlight exposure, ideal for solar panel installations. Economically, Poland is investing in renewable energy, enhancing the feasibility of solar projects. Socially, the region benefits from a skilled workforce in Rzesz\u00F3w, fostering estate development. However, environmental considerations are moderate due to potential impacts on local ecosystems. With a strong economic landscape, supportive community, and relatively favorable environmental conditions, the investment attractiveness for estate development and solar panels in this location stands at a promising level of 8 for estate development and 7 for solar panel installation.",
+          "Resources": null,
+          "Time": 1731875163
+        }
+      ]
     }
   }
 }

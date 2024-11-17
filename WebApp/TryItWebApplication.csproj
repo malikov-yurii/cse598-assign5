@@ -149,6 +149,8 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="App_Data\registered-users.xml" />
+    <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="TryItWebForm.aspx" />
   </ItemGroup>
