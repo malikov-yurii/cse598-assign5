@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web;
+using System.Web.Security;
 using WebApplication.App_Code;
 
 namespace WebApplication
@@ -15,30 +16,40 @@ namespace WebApplication
         {
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
-            
-            User user = UsersRegistry.ValidateUser(username, password);
+            string returnUrl = Request.QueryString["ReturnUrl"];
+            UsersRegistry userRegistry;
 
-            if (user != null)
+            // Identify whethere Member or Staff User is trying to login
+            if (returnUrl.Contains("/Staff/"))
             {
-                // Store the user ID in cookies to maintain login state
+                userRegistry = new StaffRegistry();
+            }
+            else {
+                userRegistry = new MembersRegistry();
+            }
+
+            User user = userRegistry.ValidateUser(username, password); 
+
+            if (user != null) {
+                // Store the user ID in cookies
                 HttpCookie userCookie = new HttpCookie("userID", user.UserId);
                 Response.Cookies.Add(userCookie);
-                user.LogIn();
 
-                // Redirect to the MemberUser page after successful login
-                // TODO redirect user based on the user role
-                Response.Redirect("Default.aspx");
-            }
-            else
-            {
-                lblLoginResult.Text = "Invalid username or password. Please try again.";
+                // Store User details into the Session
+                user.SessionLogIn();
+                // Pass Forms Security
+                FormsAuthentication.RedirectFromLoginPage(username, false);
+            } else {
+                lblLoginResult.Text = "Invalid login";
             }
         }
 
+        // Only Member Users can be created
         protected void btnRegister_Click(object sender, EventArgs e)
         {
             string regUsername = txtUsername.Text.Trim();
             string regPassword = txtPassword.Text.Trim();
+            UsersRegistry userRegistry = new MembersRegistry();
 
             if (string.IsNullOrEmpty(regUsername) || string.IsNullOrEmpty(regPassword))
             {
@@ -46,17 +57,16 @@ namespace WebApplication
                 return;
             }
 
-            if (UsersRegistry.IsUserExists(regUsername))
+            if (userRegistry.IsUserExists(regUsername))
             {
                 lblLoginResult.Text = "Username already exists. Please choose a different one.";
             }
             else
             {
-                // Save new user credentials to the data file
-                // For now calway create a MemberUser
+                // Save new user credentials to the Members.xml
                 string userId = Guid.NewGuid().ToString();
                 MemberUser user = new MemberUser(userId, regUsername, regPassword);
-                UsersRegistry.WriteUser(user);
+                userRegistry.WriteUser(user);
                 lblLoginResult.Text = "Registration successful. You can now log in.";
             }
         }

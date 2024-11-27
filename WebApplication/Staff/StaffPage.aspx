@@ -3,6 +3,8 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main>
         <h1>Staff Page</h1>
-        <p>Welcome, this page is accessible only to logged-in staff users. (TODO in Assignment 6)</p>
+        <h2>List of Members</h2>
+        <asp:Literal ID="MembersTableLiteral" runat="server"></asp:Literal>
+
     </main>
 </asp:Content>

@@ -53,16 +53,14 @@
                 </button>
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <a class="nav-link" runat="server" href="~/MemberPage.aspx">Member Page</a>
-                        <a class="nav-link" runat="server" href="~/StaffPage.aspx">Staff Page</a>
+                        <asp:Button class="btn btn-dark" ID="btnMemberPage" runat="server" Text="Go To Member Page" OnClick="btnMemberPage_Click" />
+                        <asp:Button class="btn btn-dark" ID="btnStaffPage" runat="server" Text="Go To Staff Page" OnClick="btnStaffPage_Click" />
                     </ul>
 
                     <div class="nav-item d-flex text-nowrap">
                         <span ID="loggedInUser" runat="server" class="nav-link-login-logout"></span>
-                        <asp:HyperLink ID="linkLogin" runat="server" NavigateUrl="~/Login.aspx" CssClass="nav-link nav-link-login-logout" Visible="true">Login/Register</asp:HyperLink>
                         <asp:LinkButton ID="linkLogout" runat="server" OnClick="Logout_Click" CssClass="nav-link nav-link-login-logout" Visible="true">Logout</asp:LinkButton>
                     </div>
-
                 </div>
             </div>
         </nav>

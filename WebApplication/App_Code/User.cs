@@ -19,13 +19,26 @@ namespace WebApplication.App_Code
             UserRole = userRole;
         }
 
-        public void LogIn() {
-            HttpContext.Current.Session["CurrentUser"] = this; // Set Current User in Session
+        //Set Current User in Session
+        public void SessionLogIn()
+        {
+            HttpContext.Current.Session["CurrentUser"] = this;
         }
 
-        public void LogOut()
+        //Remove Current User from Session
+        public void SessionLogOut()
         {
-            HttpContext.Current.Session["CurrentUser"] = null; // Remove Current User from Session
+            HttpContext.Current.Session["CurrentUser"] = null;
         }
+    }
+
+    public class StaffUser : User
+    {
+        public StaffUser(string userId, string username, string password) : base(userId, username, password, "StaffUser") { }
+    }
+
+    public class MemberUser : User
+    {
+        public MemberUser(string userId, string username, string password) : base(userId, username, password, "MemberUser") { }
     }
 }

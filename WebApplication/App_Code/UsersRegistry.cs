@@ -1,95 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Web;
+using System.Xml.Linq;
 
 namespace WebApplication.App_Code
 {
-    public class UsersRegistry
+    public abstract class UsersRegistry
     {
-        private static string dataFilePath = HttpContext.Current.Server.MapPath("~/App_Data/users.txt");
+        protected string dataFilePath;
+        protected string userRegistryType;
 
-        public UsersRegistry()
+        public List<User> ReadUsers()
         {
-            EnsureFileExists();
-        }
+            List<User> users = new List<User>();
 
-        private void EnsureFileExists()
-        {
-            if (!File.Exists(dataFilePath))
+            if (File.Exists(dataFilePath))
             {
-                File.Create(dataFilePath).Close();
-            }
-        }
+                XDocument doc = XDocument.Load(dataFilePath);
+                var userElements = doc.Descendants(userRegistryType);
 
-
-        // Write a new User to the file
-        public static void WriteUser(User user)
-        {
-            using (StreamWriter sw = File.AppendText(dataFilePath))
-            {
-                sw.WriteLine(user.UserId + "," + user.Username + "," + user.Password + "," + user.UserRole);
-            }
-        }
-
-        // Read all users from the file
-        public static List<User> ReadUsers()
-        {
-            var users = new List<User>();
-            string[] lines = File.ReadAllLines(dataFilePath);
-            foreach (string line in lines)
-            {
-                string[] parts = line.Split(',');
-                if (parts.Length == 4)
+                foreach (var userElement in userElements)
                 {
-                    string userId = parts[0];
-                    string username = parts[1];
-                    string password = parts[2];
-                    string userRole = parts[3];
+                    string userId = userElement.Element("UserId").Value;
+                    string username = userElement.Element("Username").Value;
+                    string password = userElement.Element("Password").Value;
 
-                    if (userRole == "MemberUser")
+                    if (userRegistryType == "Member")
                     {
                         users.Add(new MemberUser(userId, username, password));
                     }
-                    else if (userRole == "StaffUser")
+
+                    if (userRegistryType == "Staff")
                     {
                         users.Add(new StaffUser(userId, username, password));
                     }
+
                 }
             }
+
             return users;
         }
 
-        // Check if user exists by username
-        public static bool IsUserExists(string username)
+        public bool IsUserExists(string username)
         {
             var users = ReadUsers();
-            foreach (var user in users)
-            {
-                if (user.Username == username)
-                {
-                    return true;
-                }
-            }
-            return false;
+            return users.Any(user => user.Username == username);
         }
 
-        // Validate user credentials
-        public static User ValidateUser(string username, string password)
+        public User ValidateUser(string username, string password)
         {
             var users = ReadUsers();
-            foreach (var user in users)
-            {
-                if (user.Username == username && user.Password == password)
-                {
-                    return user;
-                }
-            }
-            return null;
+            return users.FirstOrDefault(user => user.Username == username && user.Password == password);
         }
 
-        // Retrievev user by userId
-        public static User GetUserById(string userId) {
+        public User GetUserById(string userId)
+        {
             var users = ReadUsers();
             foreach (var user in users)
             {
@@ -99,6 +66,55 @@ namespace WebApplication.App_Code
                 }
             }
             return null;
+        }
+
+        public abstract void WriteUser(User user);
+    }
+
+    public class MembersRegistry : UsersRegistry
+    {
+        public MembersRegistry()
+        {
+            dataFilePath = HttpContext.Current.Server.MapPath("~/App_Data/Members.xml");
+            userRegistryType = "Member";
+        }
+
+
+        public override void WriteUser(User user)
+        {
+            XDocument doc = XDocument.Load(dataFilePath);
+            XElement root = doc.Element("Users");
+
+            User existingUser = GetUserById(user.UserId);
+
+            if (existingUser != null)
+            {
+                return;
+            }
+            // Create new Member entry
+            XElement newMember = new XElement("Member",
+                new XElement("UserId", user.UserId),
+                new XElement("Username", user.Username),
+                new XElement("Password", user.Password),
+                new XElement("UserRole", user.UserRole)
+            );
+
+            root.Add(newMember);
+            doc.Save(dataFilePath);
+        }
+    }
+
+    public class StaffRegistry : UsersRegistry
+    {
+        public StaffRegistry()
+        {
+            dataFilePath = HttpContext.Current.Server.MapPath("~/App_Data/Staff.xml");
+            userRegistryType = "Staff";
+        }
+
+        public override void WriteUser(User user)
+        {
+            return; // It is not allowed to register Staff users from UI
         }
     }
 }

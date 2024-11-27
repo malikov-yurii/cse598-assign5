@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Users>
+  <Member>
+    <UserId>bce295f5-d2f6-45ed-837d-a7439b95bd9c</UserId>
+    <Username>test</Username>
+    <Password>test</Password>
+    <UserRole>MemberUser</UserRole>
+  </Member>
+  <Member>
+    <UserId>95393859-ff16-4622-a15b-96df2c74e5d6</UserId>
+    <Username>55</Username>
+    <Password>55</Password>
+    <UserRole>MemberUser</UserRole>
+  </Member>
+</Users>

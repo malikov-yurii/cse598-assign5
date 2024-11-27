@@ -15,6 +15,24 @@ namespace WebApplication
     {
 
         /// <summary>
+        /// btnMemberPage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMemberPage;
+
+        /// <summary>
+        /// btnStaffPage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnStaffPage;
+
+        /// <summary>
         /// loggedInUser control.
         /// </summary>
         /// <remarks>
@@ -22,15 +40,6 @@ namespace WebApplication
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl loggedInUser;
-
-        /// <summary>
-        /// linkLogin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink linkLogin;
 
         /// <summary>
         /// linkLogout control.

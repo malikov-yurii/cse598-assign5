@@ -10,9 +10,9 @@
         </section>
 
         <h2>Check Location Characteristics</h2>
-        <asp:TextBox ID="txtLatitude" runat="server" Placeholder="Enter Latitude" /><br /><br />
-        <asp:TextBox ID="txtLongitude" runat="server" Placeholder="Enter Longitude" /><br /><br />
-        <asp:Button ID="btnGetLocationData" runat="server" Text="Get Location Data" OnClick="btnGetLocationData_Click" />
+        <asp:TextBox class="form-control my-2" ID="txtLatitude" runat="server" Placeholder="Enter Latitude" />
+        <asp:TextBox class="form-control my-2" ID="txtLongitude" runat="server" Placeholder="Enter Longitude" />
+        <asp:Button class="btn btn-primary" ID="btnGetLocationData" runat="server" Text="Get Location Data" OnClick="btnGetLocationData_Click" />
         <asp:Label ID="lblLocationData" runat="server" Text="" /><br />
     </main>
 </asp:Content>
